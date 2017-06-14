@@ -25,4 +25,5 @@ public class SimpleSimilarityPlugin extends Plugin {
     indexModule.addSimilarity("simple-similarity", SimpleSimilarityProvider::new);
   }
 
+
 }
