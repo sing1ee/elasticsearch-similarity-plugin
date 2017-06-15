@@ -14,6 +14,7 @@
 
 package org.elasticsearch.search.similarity;
 
+import org.apache.lucene.search.CollectionStatistics;
 import org.apache.lucene.search.similarities.BM25Similarity;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
@@ -36,4 +37,10 @@ public class SimpleSimilarity extends BM25Similarity {
     protected float idf(long docFreq, long docCount) {
         return 1f;
     }
+
+    @Override
+    protected float avgFieldLength(CollectionStatistics collectionStats) {
+        return 1f;
+    }
+    
 }
