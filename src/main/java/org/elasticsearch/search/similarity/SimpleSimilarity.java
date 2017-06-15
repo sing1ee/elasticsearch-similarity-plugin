@@ -16,6 +16,7 @@ package org.elasticsearch.search.similarity;
 
 import org.apache.lucene.search.CollectionStatistics;
 import org.apache.lucene.search.similarities.BM25Similarity;
+import org.apache.lucene.util.SmallFloat;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.common.settings.Settings;
 
@@ -42,5 +43,19 @@ public class SimpleSimilarity extends BM25Similarity {
     protected float avgFieldLength(CollectionStatistics collectionStats) {
         return 1f;
     }
-    
+
+    @Override
+    protected byte encodeNormValue(float boost, int fieldLength) {
+        return SmallFloat.floatToByte315(boost / (float) fieldLength);
+    }
+
+    @Override
+    public void setDiscountOverlaps(boolean v) {
+        super.setDiscountOverlaps(false);
+    }
+
+    @Override
+    public boolean getDiscountOverlaps() {
+        return false;
+    }
 }
