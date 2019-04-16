@@ -1,6 +1,8 @@
 # elasticsearch similarity plugin
 custome similarity plugin for elasticsearch
 
+# No longer applicable for elasticsearch 7.0 +
+# elasticsearch 7.0+ see [Similarity Module](https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-similarity.html#_available_similarities)
 
 ### more details
 - choose right version source code.
